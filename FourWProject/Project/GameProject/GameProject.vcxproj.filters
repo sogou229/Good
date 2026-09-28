@@ -8,6 +8,13 @@
     <ClInclude Include="Player.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="Enemy.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -15,6 +22,13 @@
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Enemy.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
