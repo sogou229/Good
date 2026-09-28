@@ -112,8 +112,8 @@ void Init(void)
 	//è\âÕ
 	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Stage.png"));
 	new Stage();
-	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Title.png"));
-	new Title();
+	//ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+	//new Title();
 
 
 

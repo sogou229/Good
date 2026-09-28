@@ -10,7 +10,10 @@ Stage::Stage() :Base(eType_Stage) {
 void Stage::Draw() {
 	m_stage.SetSize(1920, 1080);
 	// ステージ画像の位置を設定
-	m_stage.SetPos(GetScreenPos(m_pos));
+	//m_stage.SetPos(GetScreenPos(m_pos));
+
+	m_stage.SetCenter(960, 540);
+	m_stage.SetPos(CVector2D(960, 540));
 	// ステージ画像を描画
-	//m_stage.Draw();
+	m_stage.Draw();
 }
