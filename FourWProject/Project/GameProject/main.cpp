@@ -87,7 +87,7 @@ void Init(void)
 	
 	//úAê£
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png"));//Player::_anim_data, 256, 256));
-	new Player(CVector2D(400,400),false);
+	new Player(CVector2D(300,300),false);
 
 
 
