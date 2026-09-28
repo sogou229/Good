@@ -12,5 +12,5 @@ void Stage::Draw() {
 	m_stage.SetPos(GetScreenPos(m_pos));
 
 	// ステージ画像を描画
-	m_stage.Draw();
+	//m_stage.Draw();
 }
