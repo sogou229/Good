@@ -1,6 +1,7 @@
 #include "Base/Base.h"
 #include "Player.h"
 #include "Stage.h"
+#include "Title.h"
 void MainLoop(void) {
 	//--------------------------------------------------------------
 	//ƒQ[ƒ€’†‚Ì“®‚«‚Í‚±‚±‚É‘‚­
@@ -112,8 +113,8 @@ void Init(void)
 	//\‰Í
 	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Stage.png"));
 	new Stage();
-
-
+	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Title.png"));
+	new Title();
 
 
 
