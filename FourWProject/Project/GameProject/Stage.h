@@ -15,7 +15,7 @@ public:
 	float GetGroundY()const {
 		return m_ground_y;
 	}
-	float GetLeftx()const {
+	float GetLeftX()const {
 		return m_left_x;
 	}
 	float GetRightX() const

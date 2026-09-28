@@ -13,6 +13,7 @@ enum {
     eType_UI,
     eType_Scene,
     eType_Stage,
+    eType_Title,
 };
 
 //d—Í‰Á‘¬“x
