@@ -1,4 +1,5 @@
 #include "Base/Base.h"
+#include "Player.h"
 
 void MainLoop(void) {
 	//--------------------------------------------------------------
@@ -84,6 +85,30 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 	
+	//廣瀬
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png"));//Player::_anim_data, 256, 256));
+	new Player(CVector2D(400,400),false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//十河
 
 
 
