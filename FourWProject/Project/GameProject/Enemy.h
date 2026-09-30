@@ -1,7 +1,7 @@
 #pragma once
 #include "Base/Base.h"
 
-/*class Enemy :public Base {
+class Enemy :public Base {
 private:
 	enum {
 		eState_Idle,
@@ -16,4 +16,3 @@ public:
 	void Draw();
 	
 };
-*/

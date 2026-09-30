@@ -15,5 +15,5 @@ void Stage::Draw() {
 	m_stage.SetCenter(960, 540);
 	m_stage.SetPos(CVector2D(960, 540));
 	// ステージ画像を描画
-	m_stage.Draw();
+	//m_stage.Draw();
 }
