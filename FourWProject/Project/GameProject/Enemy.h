@@ -14,5 +14,5 @@ public:
 	Enemy(const CVector2D& pos);
 	void Update();
 	void Draw();
-	
+	static TexAnimData _anim_data[];
 };
