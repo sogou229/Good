@@ -2,11 +2,10 @@
 #include "Player.h"
 #include "Stage.h"
 #include "Title.h"
-<<<<<<< HEAD
-#include "Enemy.h"
-=======
 #include "HpBar.h"
->>>>>>> 28e997f5c8ca1ba8603e5c258fb7dc023e37d64a
+#include "Enemy.h"
+#include "HpBar.h"
+
 void MainLoop(void) {
 	//--------------------------------------------------------------
 	//ƒQ[ƒ€’†‚Ì“®‚«‚Í‚±‚±‚É‘‚­
