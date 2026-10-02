@@ -4,6 +4,7 @@
 Player::Player(const CVector2D& pos, bool flip)
 	: Base(eType_Player)
 	, m_state(0)
+	, m_attack_cnt(0)
 	, m_hp(100)
 	, m_is_ground(true)
 	, m_isFlip(false)
@@ -17,39 +18,59 @@ Player::Player(const CVector2D& pos, bool flip)
 	// 座標設定
 	m_pos = pos;
 
-	m_img.SetSize(200, 200);
+	m_img.SetSize(400, 400);
 	m_img.ChangeAnimation(0);
 }
 
 void Player::Update()
 {
-
-	//アニメーションの更新
+	// アニメーションの更新
 	m_img.UpdateAnimation();
 
+	// 攻撃
+	if (PUSH(CInput::eButton1))
+	{
+		m_state = eState_Attack;
+		m_attack_cnt = 0;
+		m_img.ChangeAnimation(eAnimAttack, false);
+		return;
+	}
+
+	// 攻撃中
+	if (m_state == eState_Attack)
+	{
+		m_attack_cnt++;
+
+		if (m_attack_cnt >= 20)
+		{
+			m_state = eState_Normal;
+			m_img.ChangeAnimation(eAnimIdle);
+		}
+
+		return;
+	}
+
 	// 右移動
-    if (CInput::HOLD(CInput::eRight))
-    {
-        m_pos.x += 5.0f;
+	if (HOLD(CInput::eRight))
+	{
+		m_pos.x += 5.0f;
 		m_flip = false;
-		m_img.ChangeAnimation(1);
-		
-    }
+		m_img.ChangeAnimation(eAnimMove);
+	}
 
-    // 左移動
-	else if (CInput::HOLD(CInput::eLeft))
-    {
-        m_pos.x -= 5.0f;
+	// 左移動
+	else if (HOLD(CInput::eLeft))
+	{
+		m_pos.x -= 5.0f;
 		m_flip = true;
-		m_img.ChangeAnimation(1);
-    }
+		m_img.ChangeAnimation(eAnimMove);
+	}
 
-	 // 動いていない
-	 else
-	 {
-		 m_img.ChangeAnimation(0);
-	 }
-	 
+	// 動いていない
+	else
+	{
+		m_img.ChangeAnimation(eAnimIdle);
+	}
 }
 
 void Player::Draw()
@@ -88,10 +109,28 @@ static TexAnim _run[] = {
 	{ 23,2 },
 	{ 24,2 },
 	{ 25,2 },
+	{ 26,2 },
+	{ 27,2 },
+	{ 28,2 },
+	{ 29,2 },
+	{ 30,2 },
+	{ 31,2 },
 };
+
+static TexAnim _attack[] = {
+	{ 32,2 },
+	{ 33,2 },
+	{ 34,2 },
+	{ 35,2 },
+	{ 36,2 },
+	{ 37,2 },
+	{ 38,2 },
+};
+
 TexAnimData Player::_anim_data[] = {
-	ANIMDATA(_idle),//eAnimIdle=0
+	ANIMDATA(_idle),
 	ANIMDATA(_run),
+	ANIMDATA(_attack),
 };
 void Player::Collision(Base* b) {
 

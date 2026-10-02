@@ -5,6 +5,7 @@ class Player :public Base {
 private:
 	enum
 	{
+		eState_Normal,
 		eState_Attack,
 		eState_Jump,
 		eState_Damage,
@@ -14,6 +15,7 @@ private:
 	//プレイヤーのアニメーション
 	enum
 	{
+		eAnimIdle,
 		eAnimMove,
 		eAnimAttack,
 		eAnimDamage,
@@ -22,6 +24,8 @@ private:
 
 	//状態変数
 	int m_state;
+	int m_attack_cnt;
+
 	//アニメーションの種類
 	CImage m_img;
 	bool m_flip;

@@ -24,7 +24,7 @@ void Enemy::Update()
 		if (distance > 50.0f)
 		{
 			// プレイヤーが右にいる
-			m_pos.x += 2.0f;
+			m_pos.x += 3.0f;
 			m_flip = false;
 
 			m_img.ChangeAnimation(1);
@@ -32,7 +32,7 @@ void Enemy::Update()
 		else if (distance < -50.0f)
 		{
 			// プレイヤーが左にいる
-			m_pos.x -= 2.0f;
+			m_pos.x -= 3.0f;
 			m_flip = true;
 
 			m_img.ChangeAnimation(1);
