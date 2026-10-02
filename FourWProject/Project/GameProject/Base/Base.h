@@ -14,6 +14,7 @@ enum {
     eType_Scene,
     eType_Stage,
     eType_Title,
+    eType_HpBar,
 };
 
 //d—Í‰Á‘¬“x

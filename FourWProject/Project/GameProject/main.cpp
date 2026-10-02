@@ -2,7 +2,11 @@
 #include "Player.h"
 #include "Stage.h"
 #include "Title.h"
+<<<<<<< HEAD
 #include "Enemy.h"
+=======
+#include "HpBar.h"
+>>>>>>> 28e997f5c8ca1ba8603e5c258fb7dc023e37d64a
 void MainLoop(void) {
 	//--------------------------------------------------------------
 	//ゲーム中の動きはここに書く
@@ -116,7 +120,8 @@ void Init(void)
 	new Stage();
 	//ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	//new Title();
-
+	new HpBar(false, 100); //プレイヤー
+	new HpBar(true, 100); //敵
 
 
 
