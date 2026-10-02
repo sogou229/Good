@@ -5,6 +5,9 @@ HpBar::HpBar(bool isEnemy, int maxHp)
 {
     m_maxHp = maxHp;
     m_hp = maxHp;
+    m_isEnemy = isEnemy;
+
+    m_img.SetCenter(0, 0);
 
     if (isEnemy)
     {
@@ -15,7 +18,7 @@ HpBar::HpBar(bool isEnemy, int maxHp)
         m_img.SetSize(650, 217);
 
         // âÊñ âEè„
-        m_pos = CVector2D(1200, 100);
+        m_pos = CVector2D(1270, 25);
     }
     else
     {
@@ -26,11 +29,10 @@ HpBar::HpBar(bool isEnemy, int maxHp)
         m_img.SetSize(650, 217);
 
         // âÊñ ç∂è„
-        m_pos = CVector2D(20, 100);
+        m_pos = CVector2D(20, 25);
     }
 
-    // ç∂è„ÇäÓèÄ
-    m_img.SetCenter(0, 0);
+  
 }
 
 

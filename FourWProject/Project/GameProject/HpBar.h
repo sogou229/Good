@@ -9,6 +9,8 @@ private:
     int m_maxHp;
     int m_hp;
 
+    bool m_isEnemy;
+
 public:
     HpBar(bool isEnemy, int maxHp);
 
@@ -17,8 +19,13 @@ public:
 
     void Damage(int damage);
 
+    void SetUp(int hp);
+
     int GetHp() const
     {
         return m_hp;
+    }
+    int GetMaxHp()const {
+        return m_maxHp;
     }
 };

@@ -118,8 +118,8 @@ void Init(void)
 	//new Title();
 	new HpBar(false, 100); //ÉvÉåÉCÉÑÅ[
 	new HpBar(true, 100); //ìG
-
-
+	ADD_RESOURCE("GameOver", CImage::CreateImage("Image/GameOver.png"));
+	ADD_RESOURCE("GameClear", CImage::CreateImage("Image/GameClear.png"));
 
 
 }
