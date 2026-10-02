@@ -4,7 +4,7 @@
 #include "Title.h"
 #include "HpBar.h"
 #include "Enemy.h"
-#include "HpBar.h"
+//#include "HpBar.h"
 
 void MainLoop(void) {
 	//--------------------------------------------------------------
@@ -118,9 +118,8 @@ void Init(void)
 	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Stage.png"));
 	new Stage();
 	//ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+	//ADD_RESOURCE("Title", CImage::CreateImage("Image/UI.png"));
 	//new Title();
-	new HpBar(false, 100); //ÉvÉåÉCÉÑÅ[
-	new HpBar(true, 100); //ìG
 	ADD_RESOURCE("GameOver", CImage::CreateImage("Image/GameOver.png"));
 	ADD_RESOURCE("GameClear", CImage::CreateImage("Image/GameClear.png"));
 

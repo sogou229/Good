@@ -19,12 +19,11 @@ public:
 
     void Damage(int damage);
 
-    void SetUp(int hp);
-
     int GetHp() const
     {
         return m_hp;
     }
+
     int GetMaxHp()const {
         return m_maxHp;
     }
