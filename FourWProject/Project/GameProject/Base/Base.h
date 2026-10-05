@@ -4,6 +4,8 @@ enum {
     eType_Map,
     eType_Door,
     eType_AreaChange,
+    eType_Stage,
+    eType_HpBar,
     eType_Player,
     eType_Enemy,
     eType_Goal,
@@ -12,9 +14,7 @@ enum {
     eType_Effect,
     eType_UI,
     eType_Scene,
-    eType_Stage,
     eType_Title,
-    eType_HpBar,
 };
 
 //èdóÕâ¡ë¨ìx
