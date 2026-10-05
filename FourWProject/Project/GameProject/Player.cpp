@@ -47,7 +47,7 @@ void Player::Update()
 
 
 	//ƒWƒƒƒ“ƒv
-	if (PUSH(CInput::eUp) && m_is_ground)
+	if (PUSH(CInput::eButton5) && m_is_ground)
 	{
 		m_vec.y = -15.0f;
 		m_is_ground = false;
