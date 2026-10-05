@@ -27,6 +27,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="HpBar.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerAttack.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <ClCompile Include="HpBar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAttack.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
