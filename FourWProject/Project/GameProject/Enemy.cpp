@@ -36,9 +36,9 @@ void Enemy::Update()
 	m_vec.y += 0.5f;
 	m_pos.y += m_vec.y;
 
-	if (m_pos.y > 390)
+	if (m_pos.y > 616)
 	{
-		m_pos.y = 390;
+		m_pos.y = 616;
 	}
 
 	m_img.UpdateAnimation();

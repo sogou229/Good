@@ -34,9 +34,9 @@ void Player::Update()
 	m_pos.y += m_vec.y;
 
 	// ’n–Ê
-	if (m_pos.y > 390)
+	if (m_pos.y > 526)
 	{
-		m_pos.y = 390;
+		m_pos.y = 526;
 		m_vec.y = 0;
 		m_is_ground = true;
 	}
