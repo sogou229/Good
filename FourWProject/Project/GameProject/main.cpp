@@ -122,7 +122,7 @@ void Init(void)
 	//new Title();
 	ADD_RESOURCE("GameOver", CImage::CreateImage("Image/GameOver.png"));
 	ADD_RESOURCE("GameClear", CImage::CreateImage("Image/GameClear.png"));
-
+	
 
 }
 
