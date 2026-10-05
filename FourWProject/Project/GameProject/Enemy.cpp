@@ -3,16 +3,44 @@
 Enemy::Enemy(const CVector2D& pos)
 	: Base(eType_Enemy)
 	, m_flip(false)
+	, m_hp(100)
+	, m_down_cnt(0)
+	, m_state(eState_Idle)
 {
 	m_img = COPY_RESOURCE("Enemy", CImage);
 	m_pos = pos;
 
+	m_img.SetSize(400, 400);
 	// 再生アニメーション
 	m_img.ChangeAnimation(0);
+
+	m_rect = CRect(-50, -100, 50, 0);
 }
 
 void Enemy::Update()
 {
+	if (m_state == eState_Down)
+	{
+		m_down_cnt++;
+
+		m_pos.y += -2.0f;
+
+		if (m_down_cnt >= 60)
+		{
+			SetKill();
+		}
+
+		return;
+	}
+
+	m_vec.y += 0.5f;
+	m_pos.y += m_vec.y;
+
+	if (m_pos.y > 390)
+	{
+		m_pos.y = 390;
+	}
+
 	m_img.UpdateAnimation();
 
 	Base* player = FindObject(eType_Player);
@@ -81,3 +109,16 @@ TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),
 	ANIMDATA(_run),
 };
+
+void Enemy::Damage(int damage)
+{
+	m_hp -= damage;
+
+	printf("Enemy HP: %d", m_hp);
+
+	if (m_hp <= 0)
+	{
+		m_state = eState_Down;
+		m_down_cnt = 0;
+	}
+}

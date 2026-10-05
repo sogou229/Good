@@ -94,7 +94,7 @@ void Init(void)
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png",Player::_anim_data, 96, 96));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("image/Enemy.png", Enemy::_anim_data, 128, 128));
 	new Player(CVector2D(300,300),false);
-	new Enemy(CVector2D(800,300));
+	new Enemy(CVector2D(800,390)); //y390
 
 
 

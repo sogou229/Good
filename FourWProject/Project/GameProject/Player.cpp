@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "PlayerAttack.h" 
+
 
 
 Player::Player(const CVector2D& pos, bool flip)
@@ -27,12 +29,38 @@ void Player::Update()
 	// アニメーションの更新
 	m_img.UpdateAnimation();
 
+	// 重力
+	m_vec.y += 0.5f;
+	m_pos.y += m_vec.y;
+
+	// 地面
+	if (m_pos.y > 390)
+	{
+		m_pos.y = 390;
+		m_vec.y = 0;
+		m_is_ground = true;
+	}
+	else
+	{
+		m_is_ground = false;
+	}
+
+
+	//ジャンプ
+	if (PUSH(CInput::eUp) && m_is_ground)
+	{
+		m_vec.y = -15.0f;
+		m_is_ground = false;
+	}
+	
 	// 攻撃
-	if (PUSH(CInput::eButton1))
+	if (PUSH(CInput::eButton1) && m_state != eState_Attack)
 	{
 		m_state = eState_Attack;
 		m_attack_cnt = 0;
 		m_img.ChangeAnimation(eAnimAttack, false);
+		new PlayerAttack(m_pos, m_flip);
+
 		return;
 	}
 
