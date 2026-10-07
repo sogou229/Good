@@ -99,6 +99,16 @@ void Player::Update()
 	{
 		m_img.ChangeAnimation(eAnimIdle);
 	}
+	// ステージ左右の端
+	if (m_pos.x < 0)
+	{
+		m_pos.x = 0;
+	}
+
+	if (m_pos.x > 1600)
+	{
+		m_pos.x = 1600;
+	}
 }
 
 void Player::Draw()
