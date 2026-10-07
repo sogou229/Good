@@ -1,16 +1,19 @@
 #include "Enemy.h"
+#include "EnemyAttack.h"
 
 Enemy::Enemy(const CVector2D& pos)
 	: Base(eType_Enemy)
 	, m_flip(false)
 	, m_hp(100)
 	, m_down_cnt(0)
+	, m_attack_cnt(0)
 	, m_state(eState_Idle)
+	
 {
 	m_img = COPY_RESOURCE("Enemy", CImage);
 	m_pos = pos;
 
-	m_img.SetSize(400, 400);
+	m_img.SetSize(400, 400);//300
 	// 再生アニメーション
 	m_img.ChangeAnimation(0);
 
@@ -31,6 +34,31 @@ void Enemy::Update()
 		}
 
 		return;
+	}
+
+	if (m_state == eState_Attack)
+	{
+		m_img.UpdateAnimation();
+
+		static int attack_cnt = 0;
+		attack_cnt++;
+
+		if (attack_cnt >= 60)
+		{
+			attack_cnt = 0;
+			m_state = eState_Idle;
+			m_img.ChangeAnimation(0);
+		}
+
+		return;
+	}
+
+	m_vec.y += 0.5f;
+	m_pos.y += m_vec.y;
+
+	if (m_pos.y > 616)
+	{
+		m_pos.y = 616;
 	}
 
 	m_vec.y += 0.5f;
@@ -69,6 +97,17 @@ void Enemy::Update()
 		{
 			// プレイヤーに近づいたら待機
 			m_img.ChangeAnimation(0);
+
+			//攻撃
+			if (PUSH(CInput::eButton2))
+			{
+				m_state = eState_Attack;
+				m_attack_cnt = 0;
+
+				m_img.ChangeAnimation(2);
+
+				new EnemyAttack(m_pos, m_flip);
+			}
 		}
 	}
 }
@@ -104,10 +143,15 @@ static TexAnim _run[]{
 	{ 17,2 },
 	{ 18,2 },
 };
-
+static TexAnim _attack[]{
+	{ 19,2 },
+	{ 20,2 },
+	{ 21,2 },
+};
 TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),
 	ANIMDATA(_run),
+	ANIMDATA(_attack),
 };
 
 void Enemy::Damage(int damage)

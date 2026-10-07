@@ -5,13 +5,15 @@ class Enemy :public Base {
 private:
 	enum {
 		eState_Idle,
-		eState_Down
+		eState_Down,
+		eState_Attack,
 	};
 	//ó‘Ô•Ï”
 	CImage m_img;
 	bool m_flip;
 	int m_hp;
 	int m_down_cnt;
+	int m_attack_cnt;
 	int m_state;
 public:
 	Enemy(const CVector2D& pos);
