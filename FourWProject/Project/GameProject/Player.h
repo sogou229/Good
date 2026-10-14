@@ -34,13 +34,17 @@ private:
 	//着地フラグ
 	bool m_is_ground;
 	//反転フラグ
-	bool m_isFlip;		
-	
+	bool m_isFlip;	
+	// ガード中かどうか
+	CImage m_guardImg;
+	bool m_isGuard;  
 
 public:
 	Player(const CVector2D& pos, bool flip);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	void Damage(int damage);
+	int GetHp() const { return m_hp; }
 	static TexAnimData _anim_data[];
 };
