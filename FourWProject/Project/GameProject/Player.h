@@ -25,6 +25,7 @@ private:
 	//状態変数
 	int m_state;
 	int m_attack_cnt;
+	int m_down_cnt;
 
 	//アニメーションの種類
 	CImage m_img;
@@ -42,5 +43,7 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	//ダメージ処理
+	void Damage(int damage);
 	static TexAnimData _anim_data[];
 };

@@ -7,6 +7,7 @@ Player::Player(const CVector2D& pos, bool flip)
 	: Base(eType_Player)
 	, m_state(0)
 	, m_attack_cnt(0)
+	, m_down_cnt(0)
 	, m_hp(100)
 	, m_is_ground(true)
 	, m_isFlip(false)
@@ -22,10 +23,29 @@ Player::Player(const CVector2D& pos, bool flip)
 
 	m_img.SetSize(400, 400);
 	m_img.ChangeAnimation(0);
+
+	//プレイヤーの当たり判定
+	m_rect = CRect(-50, -100, 50, 0);
 }
 
 void Player::Update()
 {
+	// HPが0になったとき
+	if (m_state == eState_Down)
+	{
+		m_down_cnt++;
+
+		// 上に移動する
+		m_pos.y -= 2.0f;
+
+		// 60フレーム経過したら消す
+		if (m_down_cnt >= 60)
+		{
+			SetKill();
+		}
+
+		return;
+	}
 	// アニメーションの更新
 	m_img.UpdateAnimation();
 
@@ -173,4 +193,16 @@ TexAnimData Player::_anim_data[] = {
 void Player::Collision(Base* b) {
 
 }
+void Player::Damage(int damage)
+{
+	m_hp -= damage;
 
+	printf("Player HP: %d\n", m_hp);
+
+	if (m_hp <= 0)
+	{
+		m_hp = 0;
+		m_state = eState_Down;
+		m_down_cnt = 0;
+	}
+}
