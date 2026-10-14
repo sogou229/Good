@@ -69,7 +69,7 @@ void Player::Update()
 	{
 		m_attack_cnt++;
 
-		if (m_attack_cnt >= 20)
+		if (m_attack_cnt >= 18)
 		{
 			m_state = eState_Normal;
 			m_img.ChangeAnimation(eAnimIdle);
@@ -156,13 +156,13 @@ static TexAnim _run[] = {
 };
 
 static TexAnim _attack[] = {
-	{ 32,2 },
-	{ 33,2 },
-	{ 34,2 },
-	{ 35,2 },
-	{ 36,2 },
-	{ 37,2 },
-	{ 38,2 },
+	{ 32,3 },
+	{ 33,3 },
+	{ 34,3 },
+	{ 35,3 },
+	{ 36,3 },
+	{ 37,3 },
+	{ 38,3 },
 };
 
 TexAnimData Player::_anim_data[] = {
