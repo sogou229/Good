@@ -1,4 +1,4 @@
-/*
+
 #pragma once
 #include "Base/Base.h"
 
@@ -15,4 +15,3 @@ public:
     void Update();
     void Draw();
 };
-*/

@@ -117,9 +117,9 @@ void Init(void)
 	//è\âÕ
 	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Stage.png"));
 	new Stage();
-	//ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
-	//ADD_RESOURCE("Title", CImage::CreateImage("Image/UI.png"));
-	//new Title();
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/UI.png"));
+	new Title();
 	ADD_RESOURCE("GameOver", CImage::CreateImage("Image/GameOver.png"));
 	ADD_RESOURCE("GameClear", CImage::CreateImage("Image/GameClear.png"));
 	

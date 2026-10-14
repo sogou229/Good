@@ -1,8 +1,9 @@
-/*
+
 #include "Title.h"
 #include "Player.h"
 #include "Stage.h"
 #include "HpBar.h"
+#include "Game.h"
 Title::Title(): Base(eType_Title)
 {
     // タイトル画像を読み込む
@@ -22,14 +23,13 @@ void Title::Update()
 {
     if (GetAsyncKeyState('Z') & 0x0001)
     {
-        
-
         // HPバーをゲーム開始時に生成
         new HpBar(false, 100);
         new HpBar(true, 100);
         // タイトル画面を削除する
         SetKill();
     }
+    
 }
 
 void Title::Draw()
@@ -46,4 +46,3 @@ void Title::Draw()
     m_UI.SetPos(CVector2D(950, 750));
     m_UI.Draw();
 }
-*/

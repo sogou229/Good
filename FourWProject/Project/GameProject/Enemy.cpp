@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "EnemyAttack.h"
+#include "HpBar.h"
 
 Enemy::Enemy(const CVector2D& pos)
 	: Base(eType_Enemy)
@@ -109,6 +110,31 @@ void Enemy::Update()
 				new EnemyAttack(m_pos, m_flip);
 			}
 		}
+		// プレイヤーとの距離
+		//float distance = abs(player->m_pos.x - m_pos.x);
+
+		// 近距離では一定確率でガードする例
+		if (distance < 250.0f && rand() % 100 < 3)
+		{
+			m_isGuard = true;
+		}
+		else
+		{
+			m_isGuard = false;
+		}
+		
+		// プレイヤーとの距離が近いとき、CPUがガードする
+		if (abs(player->m_pos.x - m_pos.x) < 250.0f)
+		{
+			if (rand() % 100 < 3)
+			{
+				m_isGuard = true;
+			}
+		}
+		else
+		{
+			m_isGuard = false;
+		}
 	}
 }
 
@@ -156,9 +182,25 @@ TexAnimData Enemy::_anim_data[] = {
 
 void Enemy::Damage(int damage)
 {
+	// ガード中はダメージを4分の1にする
+	if (m_isGuard)
+	{
+		damage /= 4;
+	}
+
 	m_hp -= damage;
 
-	printf("Enemy HP: %d", m_hp);
+	if (m_hp < 0)
+		m_hp = 0;
+
+	HpBar* bar = HpBar::GetBar(true);
+
+	if (bar != nullptr)
+	{
+		bar->SetHp(m_hp);
+	}
+
+	printf("Enemy HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
 	{

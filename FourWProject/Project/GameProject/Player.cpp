@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "PlayerAttack.h" 
-
+#include"HpBar.h"
 
 
 Player::Player(const CVector2D& pos, bool flip)
@@ -23,9 +23,19 @@ Player::Player(const CVector2D& pos, bool flip)
 
 	m_img.SetSize(400, 400);
 	m_img.ChangeAnimation(0);
+<<<<<<< HEAD
 
 	//プレイヤーの当たり判定
 	m_rect = CRect(-50, -100, 50, 0);
+=======
+	m_img.SetCenter(100, 20);
+
+	//m_guardImg.Load("Image/PlayerGuard.png");
+	//m_guardImg.SetSize(400, 400);
+	//m_guardImg.SetCenter(100, 20);
+
+	//m_isGuard = false;
+>>>>>>> 765105eef4c869bdaff81309e8205deb31a0ce7a
 }
 
 void Player::Update()
@@ -49,6 +59,10 @@ void Player::Update()
 	// アニメーションの更新
 	m_img.UpdateAnimation();
 
+	// 更新前の座標を確認
+	float oldX = m_pos.x;
+	float oldY = m_pos.y;
+
 	// 重力
 	m_vec.y += 0.5f;
 	m_pos.y += m_vec.y;
@@ -65,6 +79,24 @@ void Player::Update()
 		m_is_ground = false;
 	}
 
+
+	// Xキーを押している間はガード
+	/*if (GetAsyncKeyState('X') & 0x8000)
+	{
+		m_isGuard = true;
+	}
+	else
+	{
+		m_isGuard = false;
+	}
+	// ガード中はジャンプ・攻撃・移動をしない
+	if (m_isGuard)
+	{
+		// ガード中の座標を確認
+       // oldX、oldY と m_pos.x、m_pos.y を比較する
+
+		return;
+	}*/
 
 	//ジャンプ
 	if (PUSH(CInput::eButton5) && m_is_ground)
@@ -129,6 +161,7 @@ void Player::Update()
 	{
 		m_pos.x = 1600;
 	}
+	
 }
 
 void Player::Draw()
@@ -141,7 +174,25 @@ void Player::Draw()
 	
 	//描画
 	m_img.Draw();
-	
+
+	 // プレイヤーの画面上の座標を取得
+	/*CVector2D screenPos = GetScreenPos(m_pos);
+
+	if (m_isGuard)
+	{
+		CVector2D guardPos = screenPos;
+
+		m_guardImg.SetPos(guardPos);
+		m_guardImg.SetFlipH(m_flip);
+		m_guardImg.Draw();
+	}
+	else
+	{
+		m_img.SetPos(screenPos);
+		m_img.SetFlipH(m_flip);
+		m_img.Draw();
+	}
+	*/
 }
 
 static TexAnim _idle[] = {
@@ -197,6 +248,7 @@ void Player::Damage(int damage)
 {
 	m_hp -= damage;
 
+<<<<<<< HEAD
 	printf("Player HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
@@ -204,5 +256,15 @@ void Player::Damage(int damage)
 		m_hp = 0;
 		m_state = eState_Down;
 		m_down_cnt = 0;
+=======
+	if (m_hp < 0)
+		m_hp = 0;
+
+	HpBar* bar = HpBar::GetBar(false);
+
+	if (bar != nullptr)
+	{
+		bar->SetHp(m_hp);
+>>>>>>> 765105eef4c869bdaff81309e8205deb31a0ce7a
 	}
 }

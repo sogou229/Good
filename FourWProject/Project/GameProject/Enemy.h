@@ -11,6 +11,7 @@ private:
 	//ó‘Ô•Ï”
 	CImage m_img;
 	bool m_flip;
+	bool m_isGuard;
 	int m_hp;
 	int m_down_cnt;
 	int m_attack_cnt;
