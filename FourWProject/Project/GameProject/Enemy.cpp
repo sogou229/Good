@@ -44,7 +44,7 @@ void Enemy::Update()
 		static int attack_cnt = 0;
 		attack_cnt++;
 
-		if (attack_cnt >= 60)
+		if (attack_cnt >= 18)
 		{
 			attack_cnt = 0;
 			m_state = eState_Idle;
@@ -170,9 +170,9 @@ static TexAnim _run[]{
 	{ 18,2 },
 };
 static TexAnim _attack[]{
-	{ 19,2 },
-	{ 20,2 },
-	{ 21,2 },
+	{ 19,6 },
+	{ 20,6 },
+	{ 21,6 },
 };
 TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),
