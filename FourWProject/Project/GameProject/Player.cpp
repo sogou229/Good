@@ -23,11 +23,11 @@ Player::Player(const CVector2D& pos, bool flip)
 
 	m_img.SetSize(400, 400);
 	m_img.ChangeAnimation(0);
-<<<<<<< HEAD
+
 
 	//ƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
 	m_rect = CRect(-50, -100, 50, 0);
-=======
+
 	m_img.SetCenter(100, 20);
 
 	//m_guardImg.Load("Image/PlayerGuard.png");
@@ -35,9 +35,8 @@ Player::Player(const CVector2D& pos, bool flip)
 	//m_guardImg.SetCenter(100, 20);
 
 	//m_isGuard = false;
->>>>>>> 765105eef4c869bdaff81309e8205deb31a0ce7a
-}
 
+}
 void Player::Update()
 {
 	// HP‚ª0‚É‚È‚Á‚½‚Æ‚«
@@ -248,7 +247,7 @@ void Player::Damage(int damage)
 {
 	m_hp -= damage;
 
-<<<<<<< HEAD
+
 	printf("Player HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
@@ -256,15 +255,15 @@ void Player::Damage(int damage)
 		m_hp = 0;
 		m_state = eState_Down;
 		m_down_cnt = 0;
-=======
-	if (m_hp < 0)
-		m_hp = 0;
 
+		if (m_hp < 0)
+			m_hp = 0;
+	}
 	HpBar* bar = HpBar::GetBar(false);
 
 	if (bar != nullptr)
 	{
 		bar->SetHp(m_hp);
->>>>>>> 765105eef4c869bdaff81309e8205deb31a0ce7a
+
 	}
 }

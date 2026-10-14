@@ -45,12 +45,11 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
-<<<<<<< HEAD
+
 	//ƒ_ƒ[ƒWˆ—
 	void Damage(int damage);
-=======
-	void Damage(int damage);
+
 	int GetHp() const { return m_hp; }
->>>>>>> 765105eef4c869bdaff81309e8205deb31a0ce7a
+
 	static TexAnimData _anim_data[];
 };
