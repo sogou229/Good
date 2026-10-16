@@ -6,6 +6,7 @@
 #include "Game.h"
 Title::Title(): Base(eType_Scene)
 {
+   pushZ= true;
     // タイトル画像を読み込む
     m_img.Load("Image/Title.png");
     m_img.SetSize(1920, 1080);
@@ -21,7 +22,7 @@ Title::Title(): Base(eType_Scene)
 
 void Title::Update()
 {
-    if (GetAsyncKeyState('Z') & 0x0001)
+    if (!pushZ&&(GetAsyncKeyState('Z') & 0x0001))
     {
         // HPバーをゲーム開始時に生成
        // new HpBar(false, 100);
@@ -29,6 +30,9 @@ void Title::Update()
         new Game();
         // タイトル画面を削除する
         SetKill();
+    }
+    if ((GetAsyncKeyState('Z') & 0x0001)) {
+        pushZ = false;
     }
     
 }

@@ -9,6 +9,7 @@ private:
     CImage m_UI;
     bool m_start;
     int m_cnt;
+    bool pushZ;
 public:
     Title();
 
