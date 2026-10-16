@@ -63,6 +63,9 @@ void HpBar::Draw()
         rate = (float)m_hp / (float)m_maxHp;
     }
 
+    if (rate < 0.0f) rate = 0.0f;
+    if (rate > 1.0f) rate = 1.0f;
+
     // HPバー全体のサイズ
     float maxWidth = 650.0f;
     float height = 217.0f;
@@ -76,23 +79,35 @@ void HpBar::Draw()
     m_img.SetPos(CVector2D(barX, 25.0f));
     m_img.Draw();
 
-    // 緑のゲージの位置とサイズ（仮の値）
-    float gaugeLeft = barX + 43.0f;
-    float gaugeRight = barX + maxWidth - 35.0f;
-    float gaugeTop = 25.0f + 95.0f;
+    float gaugeLeft;
+    float gaugeRight;
+    float gaugeTop = 121.6f;
     float gaugeHeight = 30.0f;
-    float gaugeWidth = gaugeRight - gaugeLeft;
+   
 
-    // 減ったHPの幅
+    if (m_isEnemy)
+    {
+        // 敵側：ここは変更しない
+        gaugeLeft = barX + 43.0f;
+        gaugeRight = barX + maxWidth - 35.0f;
+    }
+    else
+    {
+        // プレイヤー側だけ調整
+        gaugeLeft = 110.0f;
+        gaugeRight = 637.5f;
+    }
+
+    float gaugeWidth = gaugeRight - gaugeLeft;
     float lostWidth = gaugeWidth * (1.0f - rate);
-    float coverWidth = lostWidth;
+
     if (lostWidth > 0.0f)
     {
         float coverX;
 
         if (m_isEnemy)
         {
-            // 敵：左から右へ減らす
+            // 敵：左から右へ減らす（元の処理）
             coverX = gaugeLeft;
         }
         else
@@ -102,7 +117,7 @@ void HpBar::Draw()
         }
 
         Utility::DrawQuad(
-            CVector2D(coverX, gaugeTop),
+            CVector2D(coverX, m_isEnemy ? gaugeTop : gaugeTop + 5.0f),
             CVector2D(lostWidth, gaugeHeight),
             CVector4D(0, 0, 0, 1)
         );
