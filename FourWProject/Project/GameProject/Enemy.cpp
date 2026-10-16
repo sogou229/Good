@@ -73,7 +73,7 @@ void Enemy::Update()
 	m_img.UpdateAnimation();
 
 	Base* player = FindObject(eType_Player);
-
+	
 	if (player != nullptr)
 	{
 		float distance = player->m_pos.x - m_pos.x;
@@ -100,7 +100,7 @@ void Enemy::Update()
 			m_img.ChangeAnimation(0);
 
 			//UŒ‚
-			if (PUSH(CInput::eButton2))
+			if (m_state== eState_Idle)
 			{
 				m_state = eState_Attack;
 				m_attack_cnt = 0;
@@ -200,11 +200,12 @@ void Enemy::Damage(int damage)
 		bar->SetHp(m_hp);
 	}
 
-	printf("Enemy HP: %d\n", m_hp);
+	/*printf("Enemy HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
 	{
 		m_state = eState_Down;
 		m_down_cnt = 0;
 	}
+	*/
 }
