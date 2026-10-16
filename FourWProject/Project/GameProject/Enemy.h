@@ -19,6 +19,7 @@ private:
 	bool m_is_ground;
 	int m_down_cnt;
 	int m_attack_cnt;
+	int m_wait_cnt;
 	int m_state;
 public:
 	Enemy(const CVector2D& pos);

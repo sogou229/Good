@@ -10,6 +10,7 @@ Enemy::Enemy(const CVector2D& pos)
 	, m_down_cnt(0)
 	, m_attack_cnt(0)
 	, m_state(eState_Idle)
+	, m_wait_cnt(0)
 	
 {
 	m_img = COPY_RESOURCE("Enemy", CImage);
@@ -106,17 +107,15 @@ void Enemy::Update()
 		{
 			// プレイヤーに近づいたら待機
 			m_img.ChangeAnimation(0);
+			m_wait_cnt++;
 
 			//攻撃
-			if (m_state == eState_Idle)
+			if (m_state == eState_Idle && m_wait_cnt>=60)
 			{
-				m_attack_cnt++;
-
-				if (m_attack_cnt >= 15)
-				{
 					m_state = eState_Attack;
 					m_attack_cnt = 0;
-				}
+					m_wait_cnt = rand()%120;
+			
 
 				m_img.ChangeAnimation(2);
 
