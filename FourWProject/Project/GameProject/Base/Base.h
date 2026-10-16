@@ -15,6 +15,7 @@ enum {
     eType_UI,
     eType_Scene,
     eType_Title,
+
 };
 
 //d—Í‰Á‘¬“x

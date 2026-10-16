@@ -33,7 +33,7 @@ void Game::Update()
 		return;
 	}
 	//“G‚ªŽ€–S‚µ‚½‚çGameClear
-	if (!Base::FindObject(eType_Enemy))
+	else if (!Base::FindObject(eType_Enemy))
 	{
 		Base::KillAll();
 		new GameClear();

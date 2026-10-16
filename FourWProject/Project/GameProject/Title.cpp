@@ -4,7 +4,7 @@
 #include "Stage.h"
 #include "HpBar.h"
 #include "Game.h"
-Title::Title(): Base(eType_Title)
+Title::Title(): Base(eType_Scene)
 {
     // ƒ^ƒCƒgƒ‹‰æ‘œ‚ğ“Ç‚İ‚Ş
     m_img.Load("Image/Title.png");

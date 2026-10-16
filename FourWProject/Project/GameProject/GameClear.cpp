@@ -12,11 +12,12 @@ void GameClear::Update()
 		//全てのオブジェクトを破棄
 		Base::KillAll();
 		//タイトルシーンへ
-		//new Title();
+		new Title();
 	}
 }
 void GameClear::Draw()
 {
-	m_img.Draw();
+	
 	m_img.SetSize(1900, 1080);
+	m_img.Draw();
 }
