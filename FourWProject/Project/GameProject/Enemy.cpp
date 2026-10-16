@@ -6,9 +6,11 @@ Enemy::Enemy(const CVector2D& pos)
 	: Base(eType_Enemy)
 	, m_flip(false)
 	, m_hp(100)
+	, m_is_ground(true)
 	, m_down_cnt(0)
 	, m_attack_cnt(0)
 	, m_state(eState_Idle)
+	, m_wait_cnt(0)
 	
 {
 	m_img = COPY_RESOURCE("Enemy", CImage);
@@ -74,6 +76,13 @@ void Enemy::Update()
 
 	Base* player = FindObject(eType_Player);
 	
+	if (PUSH(CInput::eUp) && m_is_ground)
+	{
+		m_vec.y = -15.0f;
+		m_is_ground = false;
+		
+	}
+	
 	if (player != nullptr)
 	{
 		float distance = player->m_pos.x - m_pos.x;
@@ -98,17 +107,21 @@ void Enemy::Update()
 		{
 			// プレイヤーに近づいたら待機
 			m_img.ChangeAnimation(0);
+			m_wait_cnt++;
 
 			//攻撃
-			if (m_state== eState_Idle)
+			if (m_state == eState_Idle && m_wait_cnt>=60)
 			{
-				m_state = eState_Attack;
-				m_attack_cnt = 0;
+					m_state = eState_Attack;
+					m_attack_cnt = 0;
+					m_wait_cnt = rand()%120;
+			
 
 				m_img.ChangeAnimation(2);
 
 				new EnemyAttack(m_pos, m_flip);
 			}
+			
 		}
 		// プレイヤーとの距離
 		//float distance = abs(player->m_pos.x - m_pos.x);
@@ -174,10 +187,19 @@ static TexAnim _attack[]{
 	{ 20,6 },
 	{ 21,6 },
 };
+static TexAnim _jump[]{
+	{ 29,6 },
+	{ 30,6 },
+	{ 31,6 },
+	{ 32,6 },
+	{ 33,6 },
+	{ 34,6 },
+};
 TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),
 	ANIMDATA(_run),
 	ANIMDATA(_attack),
+	ANIMDATA(_jump),
 };
 
 void Enemy::Damage(int damage)
