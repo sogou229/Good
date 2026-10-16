@@ -9,14 +9,14 @@ EnemyAttack::EnemyAttack(const CVector2D& pos, bool flip)
 
     if (flip)
     {
-        m_pos.x -= 150;
+        m_pos.x -= 100;//150
     }
     else
     {
-        m_pos.x += 150;
+        m_pos.x += 100;//150
     }
 
-    m_rect = CRect(-100, -100, 100, 0);
+    m_rect = CRect(-50, -100, 50, 0);
 }
 
 void EnemyAttack::Update()

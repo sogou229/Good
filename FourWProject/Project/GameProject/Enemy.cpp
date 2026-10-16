@@ -222,12 +222,12 @@ void Enemy::Damage(int damage)
 		bar->SetHp(m_hp);
 	}
 
-	/*printf("Enemy HP: %d\n", m_hp);
+	//printf("Enemy HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
 	{
 		m_state = eState_Down;
 		m_down_cnt = 0;
 	}
-	*/
+	
 }
