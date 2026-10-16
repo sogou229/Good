@@ -17,7 +17,7 @@ void GameOver::Update()
 }
 void GameOver::Draw()
 {
-
-	m_img.SetSize(1900, 1080);
 	m_img.Draw();
+	m_img.SetSize(1920, 1080);
+	
 }

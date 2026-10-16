@@ -110,7 +110,7 @@ void Enemy::Update()
 			m_wait_cnt++;
 
 			//UŒ‚
-			if (m_state == eState_Idle && m_wait_cnt>=60)
+			if (m_state == eState_Idle && m_wait_cnt >= 60)
 			{
 					m_state = eState_Attack;
 					m_attack_cnt = 0;
@@ -121,7 +121,7 @@ void Enemy::Update()
 
 				new EnemyAttack(m_pos, m_flip);
 			}
-			
+	
 		}
 		// ƒvƒŒƒCƒ„[‚Æ‚Ì‹——£
 		//float distance = abs(player->m_pos.x - m_pos.x);

@@ -24,8 +24,9 @@ void Title::Update()
     if (GetAsyncKeyState('Z') & 0x0001)
     {
         // HPバーをゲーム開始時に生成
-        new HpBar(false, 100);
-        new HpBar(true, 100);
+       // new HpBar(false, 100);
+        //new HpBar(true, 100);
+        new Game();
         // タイトル画面を削除する
         SetKill();
     }

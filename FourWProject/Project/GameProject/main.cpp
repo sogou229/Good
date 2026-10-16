@@ -93,8 +93,8 @@ void Init(void)
 	//úAê£
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png",Player::_anim_data, 96, 96));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("image/Enemy.png", Enemy::_anim_data, 128, 128));
-	new Player(CVector2D(300,526),false);
-	new Enemy(CVector2D(800,616)); //y390
+	//new Player(CVector2D(300,526),false);
+	//new Enemy(CVector2D(800,616)); //y390
 
 
 
@@ -116,7 +116,7 @@ void Init(void)
 
 	//è\âÕ
 	ADD_RESOURCE("Stage", CImage::CreateImage("Image/Stage.png"));
-	new Stage();
+	//new Stage();
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/UI.png"));
 	new Title();
