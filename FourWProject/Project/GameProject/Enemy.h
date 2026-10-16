@@ -7,12 +7,16 @@ private:
 		eState_Idle,
 		eState_Down,
 		eState_Attack,
+		eState_Jump,
+
 	};
 	//ó‘Ô•Ï”
 	CImage m_img;
 	bool m_flip;
 	bool m_isGuard;
 	int m_hp;
+	//’…’nƒtƒ‰ƒO
+	bool m_is_ground;
 	int m_down_cnt;
 	int m_attack_cnt;
 	int m_state;
