@@ -28,7 +28,7 @@ Player::Player(const CVector2D& pos, bool flip)
 	//プレイヤーの当たり判定
 	m_rect = CRect(-50, -100, 50, 0);
 
-	m_img.SetCenter(100, 20);
+	m_img.SetCenter(200, 350);
 
 	//m_guardImg.Load("Image/PlayerGuard.png");
 	//m_guardImg.SetSize(400, 400);
@@ -67,9 +67,9 @@ void Player::Update()
 	m_pos.y += m_vec.y;
 
 	// 地面
-	if (m_pos.y > 526)
+	if (m_pos.y > 800)
 	{
-		m_pos.y = 526;
+		m_pos.y = 800;
 		m_vec.y = 0;
 		m_is_ground = true;
 	}
@@ -110,8 +110,8 @@ void Player::Update()
 		m_state = eState_Attack;
 		m_attack_cnt = 0;
 		m_img.ChangeAnimation(eAnimAttack, false);
-		new PlayerAttack(m_pos, m_flip);
-
+		new PlayerAttack(m_pos+CVector2D(0,-100), m_flip);
+		
 		return;
 	}
 
@@ -173,6 +173,7 @@ void Player::Draw()
 	
 	//描画
 	m_img.Draw();
+	//DrawRect();
 
 	 // プレイヤーの画面上の座標を取得
 	/*CVector2D screenPos = GetScreenPos(m_pos);
@@ -248,7 +249,7 @@ void Player::Damage(int damage)
 	m_hp -= damage;
 
 
-	printf("Player HP: %d\n", m_hp);
+	//printf("Player HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
 	{

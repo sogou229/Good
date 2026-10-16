@@ -17,6 +17,8 @@ Enemy::Enemy(const CVector2D& pos)
 	m_pos = pos;
 
 	m_img.SetSize(400, 400);//300
+
+	m_img.SetCenter(200, 250);
 	// 再生アニメーション
 	m_img.ChangeAnimation(0);
 
@@ -59,23 +61,18 @@ void Enemy::Update()
 	m_vec.y += 0.5f;
 	m_pos.y += m_vec.y;
 
-	if (m_pos.y > 616)
+	if (m_pos.y > 800)
 	{
-		m_pos.y = 616;
+		m_pos.y = 800;
 	}
 
-	m_vec.y += 0.5f;
-	m_pos.y += m_vec.y;
 
-	if (m_pos.y > 616)
-	{
-		m_pos.y = 616;
-	}
 
 	m_img.UpdateAnimation();
 
 	Base* player = FindObject(eType_Player);
 	
+	//ジャンプ
 	if (PUSH(CInput::eUp) && m_is_ground)
 	{
 		m_vec.y = -15.0f;
@@ -110,7 +107,7 @@ void Enemy::Update()
 			m_wait_cnt++;
 
 			//攻撃
-			if (m_state == eState_Idle && m_wait_cnt>=60)
+			if (m_state == eState_Idle && m_wait_cnt >= 60)
 			{
 					m_state = eState_Attack;
 					m_attack_cnt = 0;
@@ -156,6 +153,7 @@ void Enemy::Draw()
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
+	//DrawRect();
 }
 
 static TexAnim _idle[] = {
