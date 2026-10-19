@@ -94,7 +94,7 @@ void Init(void)
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png",Player::_anim_data, 96, 96));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("image/Enemy.png", Enemy::_anim_data, 128, 128));
 	//プレイヤージャンプ音
-	SOUND("unko")->Load("Sound/SE/jump_sound.wav");
+	SOUND("Jump")->Load("Sound/SE/jump_sound.wav");
 	
 	//プレイヤーの剣攻撃音
 	SOUND("PlayerSlash")->Load("Sound/SE/PlayerSlash.wav");
