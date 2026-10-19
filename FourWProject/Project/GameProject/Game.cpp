@@ -26,6 +26,7 @@ Game::Game() :Base(eType_Scene)
 	m_cnt = 0;
 
 	SOUND("BGM")->Play(true);
+	SOUND("SE")->Play(true);
 }
 void Game::Update()
 {
