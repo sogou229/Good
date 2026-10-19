@@ -23,6 +23,10 @@ Enemy::Enemy(const CVector2D& pos)
 	m_img.ChangeAnimation(0);
 
 	m_rect = CRect(-50, -100, 50, 0);
+
+	m_guardImg.Load("Image/EnemyGuard.png");
+	m_guardImg.SetSize(400, 400);
+	m_guardImg.SetCenter(100, 20);
 }
 
 void Enemy::Update()
@@ -124,37 +128,87 @@ void Enemy::Update()
 		// プレイヤーとの距離
 		//float distance = abs(player->m_pos.x - m_pos.x);
 
-		// 近距離では一定確率でガードする例
-		if (distance < 250.0f && rand() % 100 < 3)
+		// ガード処理
+		if (m_isGuard)
 		{
-			m_isGuard = true;
-		}
-		else
-		{
-			m_isGuard = false;
-		}
-		
-		// プレイヤーとの距離が近いとき、CPUがガードする
-		if (abs(player->m_pos.x - m_pos.x) < 250.0f)
-		{
-			if (rand() % 100 < 3)
+			m_guard_cnt--;
+
+			if (m_guard_cnt <= 0)
 			{
-				m_isGuard = true;
+				m_isGuard = false;
 			}
 		}
 		else
 		{
-			m_isGuard = false;
+			if (abs(player->m_pos.x - m_pos.x) < 250.0f)
+			{
+				if (rand() % 100 < 3)
+				{
+					m_isGuard = true;
+					m_guard_cnt = 30;
+				}
+			}
 		}
 	}
 }
 
 void Enemy::Draw()
 {
-	m_img.SetPos(GetScreenPos(m_pos));
-	m_img.SetFlipH(m_flip);
-	m_img.Draw();
-	//DrawRect();
+	if (m_isGuard)
+	{
+		m_guardImg.SetPos(GetScreenPos(m_pos));
+		m_guardImg.SetFlipH(m_flip);
+		m_guardImg.Draw();
+	}
+	else
+	{
+		m_img.SetPos(GetScreenPos(m_pos));
+		m_img.SetFlipH(m_flip);
+		m_img.Draw();
+		//DrawRect();
+	}
+}
+
+void Enemy::Damage(int damage)
+{
+
+	// すでに死亡状態なら何もしない
+	if (m_state == eState_Down)
+		return;
+
+	printf("Enemy HP: %d\n", m_hp);
+	printf("Enemy State: %d\n", m_state);
+	printf("Bar HP: %d\n",
+		HpBar::GetBar(true) != nullptr
+		? HpBar::GetBar(true)->GetHp()
+		: -1);
+
+	// ガード中はダメージを4分の1にする
+	if (m_isGuard)
+	{
+		damage /= 4;
+	}
+
+	m_hp -= damage;
+
+	if (m_hp < 0)
+		m_hp = 0;
+
+	HpBar* bar = HpBar::GetBar(true);
+
+	if (bar != nullptr)
+	{
+		bar->SetHp(m_hp);
+	}
+
+	//printf("Enemy HP: %d\n", m_hp);
+
+	if (m_hp <= 0)
+	{
+		m_state = eState_Down;
+		m_down_cnt = 0;
+	}
+
 }
 
 static TexAnim _idle[] = {
@@ -201,44 +255,4 @@ TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_jump),
 };
 
-void Enemy::Damage(int damage)
-{
 
-	// すでに死亡状態なら何もしない
-	if (m_state == eState_Down)
-		return;
-
-	printf("Enemy HP: %d\n", m_hp);
-	printf("Enemy State: %d\n", m_state);
-	printf("Bar HP: %d\n",
-		HpBar::GetBar(true) != nullptr
-		? HpBar::GetBar(true)->GetHp()
-		: -1);
-
-	// ガード中はダメージを4分の1にする
-	if (m_isGuard)
-	{
-		damage /= 4;
-	}
-
-	m_hp -= damage;
-
-	if (m_hp < 0)
-		m_hp = 0;
-
-	HpBar* bar = HpBar::GetBar(true);
-
-	if (bar != nullptr)
-	{
-		bar->SetHp(m_hp);
-	}
-
-	//printf("Enemy HP: %d\n", m_hp);
-
-	if (m_hp <= 0)
-	{
-		m_state = eState_Down;
-		m_down_cnt = 0;
-	}
-	
-}
