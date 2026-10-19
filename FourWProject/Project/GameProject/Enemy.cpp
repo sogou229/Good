@@ -203,6 +203,18 @@ TexAnimData Enemy::_anim_data[] = {
 
 void Enemy::Damage(int damage)
 {
+
+	// すでに死亡状態なら何もしない
+	if (m_state == eState_Down)
+		return;
+
+	printf("Enemy HP: %d\n", m_hp);
+	printf("Enemy State: %d\n", m_state);
+	printf("Bar HP: %d\n",
+		HpBar::GetBar(true) != nullptr
+		? HpBar::GetBar(true)->GetHp()
+		: -1);
+
 	// ガード中はダメージを4分の1にする
 	if (m_isGuard)
 	{
