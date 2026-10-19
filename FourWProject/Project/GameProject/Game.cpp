@@ -24,6 +24,8 @@ Game::Game() :Base(eType_Scene)
 	new HpBar(false, 100);  // ƒvƒŒƒCƒ„[HP
 	new HpBar(true, 100);   // “GHP
 	m_cnt = 0;
+
+	SOUND("BGM")->Play(true);
 }
 void Game::Update()
 {

@@ -34,7 +34,7 @@ Player::Player(const CVector2D& pos, bool flip)
 	//m_guardImg.SetSize(400, 400);
 	//m_guardImg.SetCenter(100, 20);
 
-	//m_isGuard = false;
+	m_isGuard = false;
 
 }
 void Player::Update()
@@ -95,8 +95,8 @@ void Player::Update()
        // oldX、oldY と m_pos.x、m_pos.y を比較する
 
 		return;
-	}*/
-
+	}
+	*/
 	//ジャンプ
 	if (PUSH(CInput::eButton5) && m_is_ground)
 	{
