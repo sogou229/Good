@@ -32,9 +32,7 @@ Player::Player(const CVector2D& pos, bool flip)
 
 	m_img.SetCenter(200, 350);
 
-	m_guardImg.Load("Image/PlayerGuard.png");
-	m_guardImg.SetSize(400, 400);
-	m_guardImg.SetCenter(100, 20);
+
 
 	m_isGuard = false;
 
@@ -93,6 +91,7 @@ void Player::Update()
 	
 	if (m_isGuard)
 	{
+		m_img.ChangeAnimation(eAnimGuard);
 		return;
 	}
 	
@@ -171,33 +170,19 @@ void Player::Update()
 
 void Player::Draw()
 {
-	//位置設定
-	m_img.SetPos(GetScreenPos(m_pos));
-	
-	//左右反転
-	m_img.SetFlipH(m_flip);
-	
-	//描画
-	m_img.Draw();
-	//DrawRect();
-
-	 // プレイヤーの画面上の座標を取得
+	// 画面上の座標を取得
 	CVector2D screenPos = GetScreenPos(m_pos);
 
-	if (m_isGuard)
-	{
-		CVector2D guardPos = screenPos;
+	// 画像の位置を設定
+	m_img.SetPos(screenPos);
 
-		m_guardImg.SetPos(guardPos);
-		m_guardImg.SetFlipH(m_flip);
-		m_guardImg.Draw();
-	}
-	else
-	{
-		m_img.SetPos(screenPos);
-		m_img.SetFlipH(m_flip);
-		m_img.Draw();
-	}
+	// 左右反転
+	m_img.SetFlipH(m_flip);
+
+	// プレイヤーを描画
+	m_img.Draw();
+
+
 	
 }
 
@@ -242,35 +227,47 @@ static TexAnim _attack[] = {
 	{ 38,3 },
 };
 
+static TexAnim _Guard[] = {
+	{ 48 ,3 },
+};
+
 TexAnimData Player::_anim_data[] = {
 	ANIMDATA(_idle),
 	ANIMDATA(_run),
 	ANIMDATA(_attack),
+	ANIMDATA(_Guard),
 };
+
 void Player::Collision(Base* b) {
 
 }
 void Player::Damage(int damage)
 {
+	// ガード中ならダメージを受けない
+	if (m_isGuard)
+	{
+		return;
+	}
+
 	m_hp -= damage;
-
-
-	//printf("Player HP: %d\n", m_hp);
 
 	if (m_hp <= 0)
 	{
 		m_hp = 0;
 		m_state = eState_Down;
 		m_down_cnt = 0;
-
-		if (m_hp < 0)
-			m_hp = 0;
 	}
+
 	HpBar* bar = HpBar::GetBar(false);
 
 	if (bar != nullptr)
 	{
 		bar->SetHp(m_hp);
-
 	}
+	
+
+
+	//printf("Player HP: %d\n", m_hp);
+
+
 }

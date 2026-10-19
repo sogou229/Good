@@ -18,8 +18,8 @@ private:
 		eAnimIdle,
 		eAnimMove,
 		eAnimAttack,
-		eAnimDamage,
-		eAnimDown,
+		eAnimGuard,
+		
 	};
 
 	//状態変数
@@ -37,7 +37,6 @@ private:
 	//反転フラグ
 	bool m_isFlip;	
 	// ガード中かどうか
-	CImage m_guardImg;
 	bool m_isGuard;  
 
 public:

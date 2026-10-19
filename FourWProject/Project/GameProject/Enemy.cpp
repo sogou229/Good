@@ -204,7 +204,7 @@ TexAnimData Enemy::_anim_data[] = {
 void Enemy::Damage(int damage)
 {
 	// ガード中はダメージを4分の1にする
-	if (m_isGuard)
+	/*if (m_isGuard)
 	{
 		damage /= 4;
 	}
@@ -228,5 +228,5 @@ void Enemy::Damage(int damage)
 		m_state = eState_Down;
 		m_down_cnt = 0;
 	}
-	
+	*/
 }
