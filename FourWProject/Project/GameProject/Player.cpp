@@ -182,7 +182,7 @@ void Player::Draw()
 	// プレイヤーを描画
 	m_img.Draw();
 
-
+	//DrawRect();
 	
 }
 
@@ -243,10 +243,10 @@ void Player::Collision(Base* b) {
 }
 void Player::Damage(int damage)
 {
-	// ガード中ならダメージを受けない
+	// ガード中ならダメージをカット
 	if (m_isGuard)
 	{
-		return;
+		damage /= 4;
 	}
 
 	m_hp -= damage;
@@ -254,8 +254,6 @@ void Player::Damage(int damage)
 	if (m_hp <= 0)
 	{
 		m_hp = 0;
-		m_state = eState_Down;
-		m_down_cnt = 0;
 	}
 
 	HpBar* bar = HpBar::GetBar(false);
@@ -264,10 +262,10 @@ void Player::Damage(int damage)
 	{
 		bar->SetHp(m_hp);
 	}
-	
 
-
-	//printf("Player HP: %d\n", m_hp);
-
-
+	if (m_hp <= 0)
+	{
+		m_state = eState_Down;
+		m_down_cnt = 0;
+	}
 }
