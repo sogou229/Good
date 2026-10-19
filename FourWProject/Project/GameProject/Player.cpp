@@ -32,9 +32,9 @@ Player::Player(const CVector2D& pos, bool flip)
 
 	m_img.SetCenter(200, 350);
 
-	//m_guardImg.Load("Image/PlayerGuard.png");
-	//m_guardImg.SetSize(400, 400);
-	//m_guardImg.SetCenter(100, 20);
+	m_guardImg.Load("Image/PlayerGuard.png");
+	m_guardImg.SetSize(400, 400);
+	m_guardImg.SetCenter(100, 20);
 
 	m_isGuard = false;
 
@@ -81,8 +81,8 @@ void Player::Update()
 	}
 
 
-	// Xキーを押している間はガード
-	/*if (GetAsyncKeyState('X') & 0x8000)
+	// Xキーはガード
+	if (GetAsyncKeyState('X') & 0x8000)
 	{
 		m_isGuard = true;
 	}
@@ -90,15 +90,12 @@ void Player::Update()
 	{
 		m_isGuard = false;
 	}
-	// ガード中はジャンプ・攻撃・移動をしない
+	
 	if (m_isGuard)
 	{
-		// ガード中の座標を確認
-       // oldX、oldY と m_pos.x、m_pos.y を比較する
-
 		return;
 	}
-	*/
+	
 	//ジャンプ
 	if (PUSH(CInput::eButton5) && m_is_ground)
 	{
@@ -185,7 +182,7 @@ void Player::Draw()
 	//DrawRect();
 
 	 // プレイヤーの画面上の座標を取得
-	/*CVector2D screenPos = GetScreenPos(m_pos);
+	CVector2D screenPos = GetScreenPos(m_pos);
 
 	if (m_isGuard)
 	{
@@ -201,7 +198,7 @@ void Player::Draw()
 		m_img.SetFlipH(m_flip);
 		m_img.Draw();
 	}
-	*/
+	
 }
 
 static TexAnim _idle[] = {

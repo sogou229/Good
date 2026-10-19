@@ -100,6 +100,7 @@ void Init(void)
 	SOUND("PlayerSlash")->Load("Sound/SE/PlayerSlash.wav");
 
 	//エネミーの剣攻撃音
+
 	SOUND("EnemySlash")->Load("Sound/SE/EnemySlash.wav");
 	//new Player(CVector2D(300,526),false);
 	//new Enemy(CVector2D(800,616)); //y390
