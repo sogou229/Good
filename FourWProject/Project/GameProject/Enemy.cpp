@@ -109,12 +109,13 @@ void Enemy::Update()
 			//UŒ‚
 			if (m_state == eState_Idle && m_wait_cnt >= 60)
 			{
-					m_state = eState_Attack;
-					m_attack_cnt = 0;
-					m_wait_cnt = rand()%120;
-			
+				m_state = eState_Attack;
+				m_attack_cnt = 0;
+				m_wait_cnt = rand()%120;
 
 				m_img.ChangeAnimation(2);
+
+				SOUND("EnemySlash")->Play();
 
 				new EnemyAttack(m_pos, m_flip);
 			}

@@ -12,7 +12,7 @@ Game::Game() :Base(eType_Scene)
 	// ステージ
 	new Stage();
 	new Player(CVector2D(300, 526), false);
-	new Enemy(CVector2D(800, 616)); //y390
+	new Enemy(CVector2D(1560, 616)); //y616
 
 	// プレイヤー
 	//new Player(CVector2D(500, 700), false);

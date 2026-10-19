@@ -1,6 +1,8 @@
+
 #include "Player.h"
 #include "PlayerAttack.h" 
 #include"HpBar.h"
+
 
 
 Player::Player(const CVector2D& pos, bool flip)
@@ -102,6 +104,9 @@ void Player::Update()
 	{
 		m_vec.y = -15;
 		m_is_ground = false;
+
+		// ƒWƒƒƒ“ƒv‰¹‚ðÄ¶
+		SOUND("Jump")->Play();
 	}
 	
 	// UŒ‚
@@ -110,6 +115,10 @@ void Player::Update()
 		m_state = eState_Attack;
 		m_attack_cnt = 0;
 		m_img.ChangeAnimation(eAnimAttack, false);
+
+		// Œ•‚ÌUŒ‚‰¹‚ðÄ¶
+		SOUND("PlayerSlash")->Play();
+
 		new PlayerAttack(m_pos+CVector2D(0,-100), m_flip);
 		
 		return;
