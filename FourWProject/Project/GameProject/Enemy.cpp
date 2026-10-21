@@ -11,6 +11,8 @@ Enemy::Enemy(const CVector2D& pos)
 	, m_attack_cnt(0)
 	, m_state(eState_Idle)
 	, m_wait_cnt(0)
+	,m_jump_cnt(0)
+	,m_jump_time(120+rand()%181)
 	
 {
 	m_img = COPY_RESOURCE("Enemy", CImage);
@@ -62,12 +64,16 @@ void Enemy::Update()
 		return;
 	}
 
+	//重力
 	m_vec.y += 0.5f;
 	m_pos.y += m_vec.y;
 
+	//地面に着地したとき
 	if (m_pos.y > 800)
 	{
 		m_pos.y = 800;
+		m_vec.y = 0.0f;
+		m_is_ground = true;
 	}
 
 
@@ -76,12 +82,23 @@ void Enemy::Update()
 
 	Base* player = FindObject(eType_Player);
 	
-	//ジャンプ
-	if (PUSH(CInput::eUp) && m_is_ground)
+	// ランダムジャンプ
+	if (m_is_ground)
 	{
-		m_vec.y = -15.0f;
-		m_is_ground = false;
-		
+		m_jump_cnt++;
+
+		// ランダムな時間が経過したらジャンプ
+		if (m_jump_cnt >= m_jump_time)
+		{
+			m_vec.y = -15.0f;
+			m_is_ground = false;
+
+			// カウンターをリセット
+			m_jump_cnt = 0;
+
+			// 次のジャンプまでの時間（90～300フレーム）
+			m_jump_time = 90 + rand() % 181;
+		}
 	}
 	
 	if (player != nullptr)

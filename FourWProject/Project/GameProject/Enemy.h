@@ -23,6 +23,8 @@ private:
 	int m_attack_cnt;
 	int m_wait_cnt;
 	int m_state;
+	int m_jump_cnt;
+	int m_jump_time;
 public:
 	Enemy(const CVector2D& pos);
 	void Update();
