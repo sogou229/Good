@@ -26,9 +26,9 @@ Enemy::Enemy(const CVector2D& pos)
 
 	m_rect = CRect(-50, -100, 50, 0);
 
-	m_guardImg.Load("Image/EnemyGuard.png");
-	m_guardImg.SetSize(400, 400);
-	m_guardImg.SetCenter(100, 20);
+	//m_guardImg.Load("Image/EnemyGuard.png");
+	//m_guardImg.SetSize(400, 400);
+	//m_guardImg.SetCenter(100, 20);
 }
 
 void Enemy::Update()
