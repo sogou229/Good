@@ -194,6 +194,7 @@ void Enemy::Damage(int damage)
 		return;
 
 	printf("Enemy HP: %d\n", m_hp);
+	printf("Enemy HP after damage: %d\n", m_hp);
 	printf("Enemy State: %d\n", m_state);
 	printf("Bar HP: %d\n",
 		HpBar::GetBar(true) != nullptr
