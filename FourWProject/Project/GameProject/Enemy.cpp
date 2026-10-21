@@ -26,9 +26,13 @@ Enemy::Enemy(const CVector2D& pos)
 
 	m_rect = CRect(-50, -100, 50, 0);
 
+<<<<<<< HEAD
 	//m_guardImg.Load("Image/EnemyGuard.png");
 	//m_guardImg.SetSize(400, 400);
 	//m_guardImg.SetCenter(100, 20);
+=======
+	
+>>>>>>> cdffe585260af9c3cd6b88440e7fc3c888ee9800
 }
 
 void Enemy::Update()
@@ -150,9 +154,12 @@ void Enemy::Update()
 		{
 			m_guard_cnt--;
 
+			m_img.ChangeAnimation(4);
+
 			if (m_guard_cnt <= 0)
 			{
 				m_isGuard = false;
+				m_img.ChangeAnimation(0);
 			}
 		}
 		else
@@ -163,6 +170,8 @@ void Enemy::Update()
 				{
 					m_isGuard = true;
 					m_guard_cnt = 30;
+
+					m_img.ChangeAnimation(4);
 				}
 			}
 		}
@@ -171,19 +180,11 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	if (m_isGuard)
-	{
-		m_guardImg.SetPos(GetScreenPos(m_pos));
-		m_guardImg.SetFlipH(m_flip);
-		m_guardImg.Draw();
-	}
-	else
-	{
+
 		m_img.SetPos(GetScreenPos(m_pos));
 		m_img.SetFlipH(m_flip);
 		m_img.Draw();
 		//DrawRect();
-	}
 }
 
 void Enemy::Damage(int damage)
@@ -266,11 +267,15 @@ static TexAnim _jump[]{
 	{ 33,6 },
 	{ 34,6 },
 };
+static TexAnim _guard[]{
+	{ 40,6 },
+};
 TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),
 	ANIMDATA(_run),
 	ANIMDATA(_attack),
 	ANIMDATA(_jump),
+	ANIMDATA(_guard),
 };
 
 
