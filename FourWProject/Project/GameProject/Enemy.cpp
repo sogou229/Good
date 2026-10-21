@@ -26,9 +26,7 @@ Enemy::Enemy(const CVector2D& pos)
 
 	m_rect = CRect(-50, -100, 50, 0);
 
-	m_guardImg.Load("Image/EnemyGuard.png");
-	m_guardImg.SetSize(400, 400);
-	m_guardImg.SetCenter(100, 20);
+	
 }
 
 void Enemy::Update()
@@ -176,19 +174,11 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	if (m_isGuard)
-	{
-		m_guardImg.SetPos(GetScreenPos(m_pos));
-		m_guardImg.SetFlipH(m_flip);
-		m_guardImg.Draw();
-	}
-	else
-	{
+
 		m_img.SetPos(GetScreenPos(m_pos));
 		m_img.SetFlipH(m_flip);
 		m_img.Draw();
 		//DrawRect();
-	}
 }
 
 void Enemy::Damage(int damage)
@@ -272,7 +262,7 @@ static TexAnim _jump[]{
 	{ 34,6 },
 };
 static TexAnim _guard[]{
-	{ 39,6 },
+	{ 40,6 },
 };
 TexAnimData Enemy::_anim_data[] = {
 	ANIMDATA(_idle),

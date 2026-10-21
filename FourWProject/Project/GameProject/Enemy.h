@@ -14,8 +14,7 @@ private:
 	CImage m_img;
 	bool m_flip;
 	bool m_isGuard;
-	int m_guard_cnt = 0;
-	CImage m_guardImg;
+	int m_guard_cnt = 0;	
 	int m_hp;
 	//’…’nƒtƒ‰ƒO
 	bool m_is_ground;
