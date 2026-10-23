@@ -24,11 +24,16 @@ Enemy::Enemy(const CVector2D& pos)
 	// 再生アニメーション
 	m_img.ChangeAnimation(0);
 
-	m_rect = CRect(-50, -100, 50, 0);
+	//m_rect = CRect(-50, -100, 50, 0);
+
 
 	//m_guardImg.Load("Image/EnemyGuard.png");
 	//m_guardImg.SetSize(400, 400);
 	//m_guardImg.SetCenter(100, 20);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2473cb91f98c973544f97ee619e160991e6668e6
 }
 
 void Enemy::Update()
@@ -81,6 +86,23 @@ void Enemy::Update()
 	m_img.UpdateAnimation();
 
 	Base* player = FindObject(eType_Player);
+
+	// ガード中
+	if (m_isGuard)
+	{
+		m_guard_cnt--;
+
+		// ガードアニメーション
+		m_img.ChangeAnimation(4);
+
+		if (m_guard_cnt <= 0)
+		{
+			m_isGuard = false;
+			m_img.ChangeAnimation(0);
+		}
+
+		return;
+	}
 	
 	// ランダムジャンプ
 	if (m_is_ground)
@@ -132,7 +154,7 @@ void Enemy::Update()
 			{
 				m_state = eState_Attack;
 				m_attack_cnt = 0;
-				m_wait_cnt = rand()%120;
+				m_wait_cnt = rand()%110;
 
 				m_img.ChangeAnimation(2);
 
@@ -162,7 +184,7 @@ void Enemy::Update()
 		{
 			if (abs(player->m_pos.x - m_pos.x) < 250.0f)
 			{
-				if (rand() % 100 < 3)
+				if (rand() % 150 < 3)
 				{
 					m_isGuard = true;
 					m_guard_cnt = 30;
