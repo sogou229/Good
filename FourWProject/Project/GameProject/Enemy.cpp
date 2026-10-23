@@ -152,7 +152,7 @@ void Enemy::Update()
 			{
 				m_state = eState_Attack;
 				m_attack_cnt = 0;
-				m_wait_cnt = rand()%80;
+				m_wait_cnt = rand()%100;
 
 				m_img.ChangeAnimation(2);
 
