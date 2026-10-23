@@ -9,11 +9,11 @@ EnemyAttack::EnemyAttack(const CVector2D& pos, bool flip)
 
     if (flip)
     {
-        m_pos.x -= 100;//150
+        m_pos.x -= 80;//150
     }
     else
     {
-        m_pos.x += 100;//150
+        m_pos.x += 80;//150
     }
 
     m_rect = CRect(-50, -100, 50, 0);
@@ -42,10 +42,10 @@ void EnemyAttack::Collision(Base* b)
         {
             Player* player = static_cast<Player*>(b);
             player->Damage(10);
-            printf("PLAYER HIT!!\n");
+           // printf("PLAYER HIT!!\n");
 
            // Player* player = (Player*)b;
-            player->Damage(5);
+            player->Damage(15);
 
             SetKill();
         }

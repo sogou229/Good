@@ -148,11 +148,11 @@ void Enemy::Update()
 			m_wait_cnt++;
 
 			//UŒ‚
-			if (m_state == eState_Idle && m_wait_cnt >= 60)
+			if (m_state == eState_Idle && m_wait_cnt >= 40)
 			{
 				m_state = eState_Attack;
 				m_attack_cnt = 0;
-				m_wait_cnt = rand()%100;
+				m_wait_cnt = rand()%250;
 
 				m_img.ChangeAnimation(2);
 
@@ -182,7 +182,7 @@ void Enemy::Update()
 		{
 			if (abs(player->m_pos.x - m_pos.x) < 250.0f)
 			{
-				if (rand() % 150 < 3)
+				if (rand() % 130 < 3)
 				{
 					m_isGuard = true;
 					m_guard_cnt = 30;
