@@ -32,7 +32,7 @@ void PlayerAttack::Update()
 
 void PlayerAttack::Draw()
 {
-    DrawRect();
+   // DrawRect();
 }
 
 void PlayerAttack::Collision(Base* b)

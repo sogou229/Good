@@ -31,7 +31,7 @@ void EnemyAttack::Update()
 
 void EnemyAttack::Draw()
 {
-    DrawRect();
+    //DrawRect();
 }
 
 void EnemyAttack::Collision(Base* b)
