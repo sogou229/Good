@@ -125,7 +125,7 @@ void Enemy::Update()
 	{
 		float distance = player->m_pos.x - m_pos.x;
 
-		if (distance > 100.0f)
+		if (distance > 90.0f)
 		{
 			// プレイヤーが右にいる
 			m_pos.x += 3.0f;
@@ -133,7 +133,7 @@ void Enemy::Update()
 
 			m_img.ChangeAnimation(1);
 		}
-		else if (distance < -100.0f)
+		else if (distance < -90.0f)
 		{
 			// プレイヤーが左にいる
 			m_pos.x -= 3.0f;
@@ -152,7 +152,7 @@ void Enemy::Update()
 			{
 				m_state = eState_Attack;
 				m_attack_cnt = 0;
-				m_wait_cnt = rand()%100;
+				m_wait_cnt = rand()%80;
 
 				m_img.ChangeAnimation(2);
 
