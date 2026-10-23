@@ -89,7 +89,7 @@ void HpBar::Draw()
     {
         // ìGë§ÅFÇ±Ç±ÇÕïœçXÇµÇ»Ç¢
         gaugeLeft = barX + 43.0f;
-        gaugeRight = barX + maxWidth - 35.0f;
+        gaugeRight = barX + maxWidth - 45.0f;
     }
     else
     {

@@ -30,14 +30,12 @@ Enemy::Enemy(const CVector2D& pos)
 	//m_guardImg.Load("Image/EnemyGuard.png");
 	//m_guardImg.SetSize(400, 400);
 	//m_guardImg.SetCenter(100, 20);
-<<<<<<< HEAD
-=======
 
->>>>>>> 2473cb91f98c973544f97ee619e160991e6668e6
 }
 
 void Enemy::Update()
 {
+
 	if (m_state == eState_Down)
 	{
 		m_down_cnt++;
@@ -207,20 +205,9 @@ void Enemy::Draw()
 
 void Enemy::Damage(int damage)
 {
-
-	// すでに死亡状態なら何もしない
 	if (m_state == eState_Down)
 		return;
 
-	printf("Enemy HP: %d\n", m_hp);
-	printf("Enemy HP after damage: %d\n", m_hp);
-	printf("Enemy State: %d\n", m_state);
-	printf("Bar HP: %d\n",
-		HpBar::GetBar(true) != nullptr
-		? HpBar::GetBar(true)->GetHp()
-		: -1);
-
-	// ガード中はダメージを4分の1にする
 	if (m_isGuard)
 	{
 		damage /= 4;
@@ -231,6 +218,8 @@ void Enemy::Damage(int damage)
 	if (m_hp < 0)
 		m_hp = 0;
 
+	printf("Enemy HP = %d\n", m_hp);
+
 	HpBar* bar = HpBar::GetBar(true);
 
 	if (bar != nullptr)
@@ -238,10 +227,9 @@ void Enemy::Damage(int damage)
 		bar->SetHp(m_hp);
 	}
 
-	//printf("Enemy HP: %d\n", m_hp);
-
 	if (m_hp <= 0)
 	{
+		
 		m_state = eState_Down;
 		m_down_cnt = 0;
 	}
