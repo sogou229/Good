@@ -45,7 +45,7 @@ void EnemyAttack::Collision(Base* b)
             printf("PLAYER HIT!!\n");
 
            // Player* player = (Player*)b;
-            player->Damage(10);
+            player->Damage(5);
 
             SetKill();
         }
