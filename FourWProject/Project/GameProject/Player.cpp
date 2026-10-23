@@ -28,7 +28,7 @@ Player::Player(const CVector2D& pos, bool flip)
 
 
 	//ƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
-	m_rect = CRect(-50, -100, 50, 0);
+	//m_rect = CRect(-50, -100, 50, 0);
 
 	m_img.SetCenter(200, 350);
 
